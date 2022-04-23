@@ -1,0 +1,35 @@
+Node * insertInSorted(Node * head, int data)
+{
+    Node *temp=head->next;
+     Node *pre=head;
+    Node *temp1=new Node(data);
+    int f=0;
+    if(head->data>data)
+    {
+        temp1->next=head;
+        return temp1;
+    }
+
+    while(temp!=NULL)
+    {
+        
+        if(temp->data<data)
+        {
+            temp=temp->next;
+            pre=pre->next;
+        }
+        else
+        {
+            pre->next=temp1;
+            temp1->next=temp;
+            f=1;
+            break;
+        }
+    }
+    if(f==0)
+    {
+        pre->next=temp1;
+    }
+
+    return head;
+}
